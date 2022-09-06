@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Welcome to Crypto News Network !</h1>
+    <p class="lead">Your Source For Up To The Minute Crypto Currency and Block Chain News .</p>
+  </div>
+</div>
+<br/>
+
+  <div class="bt">
+<table class="table  table-bordered table-hover table-striped">
+  <thead class="thead">
+    <tr>
+      <th scope="col" class="table-secondary">Name</th>
+      <th scope="col" class="table-secondary">Price</th>
+      <th scope="col" class="table-secondary">24h High</th>
+      <th scope="col" class="table-secondary">24h Low</th>
+       <th scope="col" class="table-secondary">MarketCap</th>
+
+    </tr>
+  </thead>
+ <tbody>
+{% for key,value in price.DISPLAY.items %}
+   
+ 
+    <tr class="table-light">
+      <td>{{ key }}</td>
+      <td>{{ value.USD.PRICE }}</td>
+      <td>{{ value.USD.LOWDAY }}</td>
+       <td>{{ value.USD.HIGHDAY }}</td>
+      <td>{{ value.USD.MKTCAP }}</td>
+    </tr>
+
+ {% endfor %}  
+
+  </tbody>
+</table>
+</div>
+
+
+<hr>
+
+<br/><br/>
+<br/><br/>
+<br/><br/><br><br>
+
+
+
+
+
+
+
+
+
+	
+<div class="container">
+	          
+
+<br/><br/>
+  <div class="row">
+           {% for x in api.Data %}
+		       <div class="col-sm">
+            <div class="card-deck">
+
+	 <div class="card h-100" style="width: 14rem; ">
+     <img class="card-img-top" style="width:17.4rem ;hight:17rem"src="{{ x.imageurl }}" alt="{{ x.source }}">
+    <div class="card-body">
+    <h5 class="card-title">{{ x.title }}</h5>
+    <p class="card-text" style="display: inline-block;
+    max-width: 11rem;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;">{{ x.body}}</p>
+    <a href="{{ x.url }}" class="btn btn-secondary">Read more... </a>
+  </div>
+  
+</div>
+
+</div>  
+  </div>
+    
+     {%  endfor %}
+
+    </div>
+</div>
+<br/><br/> 
+
+
+   
+{% endblock %}
